@@ -35,3 +35,15 @@ function fizzBuzz(){
     }
 }
 console.log("***************** Final de Tarea N°2 ********************");
+
+const GRADES = [10, 12, 4, 6];
+getAverage(GRADES);
+
+function getAverage(arrayGrades){
+    let totalGrades = 0;
+    for(let i=0;i < arrayGrades.length ;i++){
+        totalGrades += arrayGrades[i]; 
+    }
+    console.log("Grades:[" + GRADES + "] Average: " + totalGrades / arrayGrades.length);
+}
+console.log("***************** Final de Tarea N°3 ********************");
