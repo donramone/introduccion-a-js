@@ -37,3 +37,40 @@ function verificarEdad(edadUsuario){
     return msg;
 }
 console.log("***************** Final de Tarea N°2 ********************");
+if(isHasDni()){
+    let age=prompt("Ingresá tu edad: ");
+    if(isNaN(age)){
+        console.log(age + " no es una edad valida.");
+    }else{
+        if (isLegalAge(age)) {
+            console.log("Podes entrar al Bar.");
+        }else {
+            console.log("No tenés edad suficiente para entrar al bar.");
+        }
+    }
+    
+}
+function isHasDni(){
+    let checkDni=(prompt("Buenos Días! ¿Tenes Documento? SI/NO" ) || '' ).toUpperCase();
+    
+    if (checkDni==="SI") {
+        return true;
+    }else if(checkDni==="NO"){
+        console.log("No podés entrar al bar sin documento." );
+        return false;
+    }else{
+        console.log("No entendí la respuesta." );
+        return isHasDni();
+    }
+
+}
+
+function isLegalAge(age){
+    const legalAge =18;
+    if (age>=legalAge) {
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log("***************** Final de Tarea N°3 ********************");
