@@ -1,5 +1,5 @@
 
-// <strong> pre-creado el tiempo total de los videos.
+
 const $btnAdd = document.querySelector("#btn-add");
 const $btnClean = document.querySelector("#btn-clean");
 let totalHours = 0;
@@ -29,24 +29,20 @@ function totalTimes(h, m, s){
   totalSeconds += Number(s);
  
   var hours = Math.floor(totalMinutes / 60 + totalHours);
-  console.log("horas de minutos: " + hours);
-  
-  var minutesRemainder = Math.floor(totalMinutes % 60);
-  console.log("restos minutos: " + minutesRemainder);
-
+   var minutesRemainder = Math.floor(totalMinutes % 60);
   var minutes = Math.floor(totalSeconds / 60 + minutesRemainder);
-  console.log("minutos de segundo : " + minutes);
-
   var secondsRemainder = Math.floor(totalSeconds % 60);
-  console.log("restos segundos: " + secondsRemainder);
-
   document.querySelector('#result-times').textContent="Total: " + hours + "H. " + minutes + "M. " + secondsRemainder + "S.";
 }
 
 function addNewTimeClass(line){
+  //TODO 
+  // <strong> pre-creado el tiempo total de los videos.
   var element = document.querySelector('#classes-times');
   var pElem = document.createElement('p');
+
   pElem.className = "pNewLineHour";
+  
   pElem.innerHTML = line;
   element.appendChild(pElem);
 }
