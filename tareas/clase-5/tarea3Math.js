@@ -1,15 +1,43 @@
-var listNumbers =[2,3,5,4,8,9,1,7,3];
+var listNumbers = generateListNumbers();
 console.log(listNumbers);
-getRepeatNumber(listNumbers);
-getMaxNumber(listNumbers);
-getMinNumber(listNumbers);
-getAverage(listNumbers);
-//const lis = document.querySelectorAll("li");
+createLiComponet(listNumbers);
+
+let $pMaxNumber = document.querySelector("#p-max-number");
+$pMaxNumber.textContent=getMaxNumber(listNumbers);
+
+let $pMinNumber = document.querySelector("#p-min-number");
+$pMinNumber.textContent=getMinNumber(listNumbers);
+
+let $pAvgNumber = document.querySelector("#p-avg-number");
+$pAvgNumber.textContent=getAverage(listNumbers);
+
+let $pRepeatNumber = document.querySelector("#p-repeat-number");
+$pRepeatNumber.textContent=getRepeatNumber(listNumbers);
+
+function generateListNumbers(){
+  var numbers = [];
+  for (let i = 0; i < 9;i++) {
+    num = Math.floor(Math.random() * 9);
+    numbers.push(num);
+  }
+  return numbers;  
+}
+
+function createLiComponet(listNumbers){
+  
+  for (var i = 0; i < listNumbers.length; i++) {
+    listItem = document.createElement('li');
+    listItem.innerHTML = listNumbers[i];
+    $listElement = document.querySelector("ul");
+    $listElement.appendChild(listItem);
+  }
+
+}
 
 function getRepeatNumber(listNumbers){
     
     let replayCount=0;
-    let number=0;
+    let repeatNumber=0;
     for (let i = 0; i < listNumbers.length; i++) {
          let count=0;
         for (let j = 0; j < listNumbers.length; j++) {
@@ -19,22 +47,13 @@ function getRepeatNumber(listNumbers){
         }
         if (count > replayCount ) {
             replayCount=count;
-            number=listNumbers[i]
+            repeatNumber=listNumbers[i]
         }
     }
-     console.log("Array repeat " + replayCount + " number is " + number);
+    return repeatNumber;
    
 }
 
-function getListNumber(){
-    const TOTAL_NUMBERS = 10;
-    const MAX_NUMBERS = 15;
-    listNumbers=[]; 
-    for(i=0; i< TOTAL_NUMBERS ;i++){
-        listNumbers.push(Math.floor(Math.random() * MAX_NUMBERS) + 1);
-    }
-    console.log(listNumbers);
-}
 
 function getMaxNumber(listNumbers) {
     let max = Number.MIN_VALUE;
@@ -43,7 +62,6 @@ function getMaxNumber(listNumbers) {
         max = listNumbers[i];
       }
     }
-    console.log("Max number is: " + max);
     return max;
   }
   
@@ -54,7 +72,6 @@ function getMaxNumber(listNumbers) {
         min = listNumbers[i];
       }
     }
-    console.log("Min number is: " + min);
     return min;
   }
   
@@ -63,19 +80,7 @@ function getMaxNumber(listNumbers) {
     for (let i = 0; i < listNumbers.length; i++) {
       total  += listNumbers[i];
     }
-    console.log("The Average number is: " + (total / listNumbers.length));
     return (total / listNumbers.length);
   }
 
-  function createLiComponet(listNumbers){
-    var ul = document.createElement('ul'), li;
-    for (var i = 0; i < listNumbers.length; i++) {
 
-            li = document.createElement('li');
-            li.appendChild(document.createTextNode(listNumbers[i]));
-            ul.appendChild(li);
-
-    }
-  return ul;
-
-  }

@@ -90,3 +90,82 @@ header{
     margin-bottom:2px;
 
 }
+
+
+#calculator-form{
+    height: 60px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto; 
+
+    background-color: rgb(236, 22, 122);
+    
+}
+
+#result-Math{
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;      
+    color: white;
+    height: 50px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: brown;
+}
+
+
+#list-form{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(236, 22, 122);
+    
+}
+
+#list-form li {
+  text-align: center;
+  list-style:none; 
+  display: inline-block;
+  font-size: 24px;
+  color: white;
+}
+
+
+#result-Math{
+    font-family: Helvetica, sans-serif;
+    color: whitesmoke;
+    font-size: 12px;
+    height: 60px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: brown;
+}
+
+#result-min-number{
+    float: left;;
+    margin: 3px;
+    background-color: rgb(12, 236, 150);
+    width: 85px;
+    height: 50px;
+}
+#result-max-number{
+    float: left;
+    margin: 3px;
+    background-color: rgb(32, 137, 223);
+    width: 85px;
+    height: 50px;
+}
+#result-avg-number{
+    float: left;
+    margin: 3px;
+    background-color: rgb(210, 223, 32);
+    width: 85px;
+    height: 50px;
+}
+#result-repeat-number{
+    float: left;
+    margin: 3px;
+    background-color: rgb(233, 49, 73);
+    width: 85px;
+    height: 50px;
+}
