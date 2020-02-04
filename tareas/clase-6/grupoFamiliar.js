@@ -55,7 +55,7 @@ function addFamiliar(cantidadFamiliar){
 
 function createInputAgesFamily(){
 
-  const $myDiv = document.createElement('div');
+    const $myDiv = document.createElement('div');
     $myDiv.className = "staticIntegrante";
 
     const $myLabel = document.createElement('label');
