@@ -5,45 +5,53 @@ const $btnCalcular = document.querySelector("#btn-calcular");
 const $btnReset = document.querySelector("#btn-reset");
 
 $btnAceptar.onclick = function(){
+const inputCantidad = Number($inputCantidad.value);
 
-  const inputCantidad = Number($inputCantidad.value);
   if (inputCantidad > 0) {
-    removeInputAgesFamily();
-    //showBtnCalcular();
     showElement("btn-calcular");
+    hideElement("btn-aceptar");
     addFamiliar($inputCantidad.value);
-    removeBtnAceptar();
-    event.preventDefault();
-
   }
+  event.preventDefault();
 }
 
 $btnCalcular.onclick = function(){
- 
-    const ages = getAges();
+    const ages = getAllAges();
     if (ages.length > 0) {
       showAges('max',  getMaxAge(ages));
       showAges('min',  getMinAge(ages));
       showAges('avg',  getAverage(ages));
-      showStatics();
+      showElement("statics");
     }
-   
+}
+
+function getAllAges() {
+
+  const $integrantes = document.querySelectorAll(".staticIntegrante input");
+  const ages = [];
+  
+  for (let i = 0; i < $integrantes.length; i++) {
+    ages.push(Number($integrantes[i].value));
+  }
+  
+  return ages;
 }
 
 $btnReset.onclick= function(){
+
   removeInputAgesFamily();
-  removeBtnCalcular()
-  removeStatics();
-  showBtnAceptar();
+  hideElement("btn-calcular");
+  hideElement("statics");
+  showElement("btn-aceptar");
+
 }
 
 function addFamiliar(cantidadFamiliar){
+  removeInputAgesFamily();
     for (let index = 0; index < cantidadFamiliar; index++) {
         createInputAgesFamily();
     }
 }
-
-
 
 function createInputAgesFamily(){
 
@@ -69,38 +77,14 @@ function removeInputAgesFamily(){
     for(let i=0;i < $inputIntegrantes.length ;i++){
       $inputIntegrantes[i].remove();
     }
-  }
-/*
-function showBtnCalcular() {
-  document.querySelector("#calcular").className = "";
+}
 
-}
-*/
-function showStatics() {
-  document.querySelector('#statics').className = '';
-}
-function showBtnCalcular() {
-  document.querySelector('#btn-calcular').className = '';
-}
 function showElement(typeElement){
   document.querySelector(`#${typeElement}`).className = '';
 }
 
-function showBtnAceptar() {
-  document.querySelector('#btn-aceptar').className = '';
-}
-
-function removeBtnCalcular(){
- 
-  document.querySelector("#btn-calcular").className = "oculto";
-}
-
-function removeBtnAceptar(){
-  document.querySelector("#btn-aceptar").className = "oculto";
-}
-
-function removeStatics(){
-  document.querySelector('#statics').className = 'oculto';
+function hideElement(typeElement){
+  document.querySelector(`#${typeElement}`).className = 'oculto';
 }
 
 function showAges(tipo, valor) {
@@ -135,11 +119,4 @@ function getAverage(ages){
   return (total / ages.length).toFixed(2);
 }
 
-function getAges() {
-  const $integrantes = document.querySelectorAll(".staticIntegrante input");
-  const edades = [];
-  for (let i = 0; i < $integrantes.length; i++) {
-    edades.push(Number($integrantes[i].value));
-  }
-  return edades;
-}
+
