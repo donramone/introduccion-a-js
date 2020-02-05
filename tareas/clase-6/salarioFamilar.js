@@ -39,10 +39,13 @@ function createInputFamily(){
 
 function removeInputFamily(){
     const $family = document.querySelector('#family');
-    //TODO:
-    // control para que cuando el div no tenga hijos no intente remover.
-    if ($family) {
+
+    if ($family.childElementCount>=1) {
+
         $family.removeChild(family.lastChild);
+
+    }else{
+        console.log("No hay mas hijos.");
     }
   
 }
