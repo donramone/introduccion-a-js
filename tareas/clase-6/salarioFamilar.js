@@ -6,6 +6,7 @@ const $btnCalcular = document.querySelector("#btn-calculate");
 $btnAgregar.onclick = function(){
     createInputFamily();
     showBtnCalculate();
+    showStatics();
     event.preventDefault();
 }
 
@@ -18,7 +19,12 @@ $btnQuitar.onclick = function(){
 }
 
 $btnCalcular.onclick = function(){
-    console.log("calculando");
+    const salaries = getAllSalary();
+    
+    showSalaries('max',  getMaxSalary(salaries));
+    showSalaries('min',  getMinSalary(salaries));
+    showSalaries('avgY',  getAvgYearSalary(salaries));
+    showSalaries('avgM',  getAvgMonthSalary(salaries));
     event.preventDefault();
 }
 
@@ -56,6 +62,60 @@ function removeInputFamily(){
 
 }
 
+function getAllSalary() {
+
+    const $integrantes = document.querySelectorAll(".salary input");
+    const salary = [];
+
+    for (let i = 0; i < $integrantes.length; i++) {
+        salary.push(Number($integrantes[i].value));
+    }
+    console.log(salary);
+    return salary;
+
+}
+
+
+function showSalaries(tipo, valor) {
+    document.querySelector(`#${tipo}-salary`).textContent = valor;
+}
+
+function getMaxSalary(salary){
+    let max = salary[0];
+    for (let i = 1; i < salary.length; i++) {
+      if (salary[i] > max) {
+        max = salary[i];
+      }
+    }
+    return max;
+}
+
+function getMinSalary(salary){
+    let min = salary[0];
+    for (let i = 1; i < salary.length; i++) {
+      if (salary[i] < min) {
+        min = salary[i];
+      }
+    }
+    return min;
+}
+
+function getAvgMonthSalary(salary){
+  let total=0;
+  for (let i = 0; i < salary.length; i++) {
+    total += salary[i];
+  }
+  return (total / salary.length).toFixed(2);
+}
+
+function getAvgYearSalary(salary){
+    let total=0;
+    for (let i = 0; i < salary.length; i++) {
+      total += salary[i] * 12;
+    }
+    return (total / salary.length).toFixed(2);
+  }
+
 function showBtnCalculate(){
     
     document.querySelector("#btn-calculate").className = "";
@@ -64,5 +124,17 @@ function showBtnCalculate(){
 function hideBtnCalculate(){
     
     document.querySelector("#btn-calculate").className = "oculto";
+      
+}
+
+function showStatics(){
+    
+    document.querySelector("#statics").className = "";
+      
+}
+
+function hideStatics(){
+    
+    document.querySelector("#statics").className = "oculto";
       
 }
