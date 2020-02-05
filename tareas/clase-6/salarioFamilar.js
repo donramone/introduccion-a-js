@@ -5,15 +5,20 @@ const $btnCalcular = document.querySelector("#btn-calculate");
 
 $btnAgregar.onclick = function(){
     createInputFamily();
+    showBtnCalculate();
     event.preventDefault();
 }
 
 $btnQuitar.onclick = function(){
-    removeInputFamily();
+    
+    if(!removeInputFamily()){
+        hideBtnCalculate();
+    }
     event.preventDefault();
 }
 
 $btnCalcular.onclick = function(){
+    console.log("calculando");
     event.preventDefault();
 }
 
@@ -34,18 +39,30 @@ function createInputFamily(){
     const $family = document.querySelector('#family');
     $family.appendChild($myDiv);
 
-
 }
 
 function removeInputFamily(){
-    const $family = document.querySelector('#family');
+    const $family = document.querySelector("#family");
 
     if ($family.childElementCount>=1) {
 
         $family.removeChild(family.lastChild);
-
-    }else{
-        console.log("No hay mas hijos.");
+        if($family.childElementCount===0){
+            return false;
+        }else{
+            return true;
+        }
     }
-  
+
+}
+
+function showBtnCalculate(){
+    
+    document.querySelector("#btn-calculate").className = "";
+      
+}
+function hideBtnCalculate(){
+    
+    document.querySelector("#btn-calculate").className = "oculto";
+      
 }
