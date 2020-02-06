@@ -6,7 +6,7 @@ const $btnCalcular = document.querySelector("#btn-calculate");
 $btnAgregar.onclick = function(){
     createInputFamily();
     showBtnCalculate();
-    showStatics();
+    
     event.preventDefault();
 }
 
@@ -25,6 +25,7 @@ $btnCalcular.onclick = function(){
     showSalaries('min',  getMinSalary(salaries));
     showSalaries('avgY',  getAvgYearSalary(salaries));
     showSalaries('avgM',  getAvgMonthSalary(salaries));
+    showStatics();
     event.preventDefault();
 }
 
@@ -68,9 +69,11 @@ function getAllSalary() {
     const salary = [];
 
     for (let i = 0; i < $integrantes.length; i++) {
-        salary.push(Number($integrantes[i].value));
+        if ($integrantes[i].value !== "") {
+            salary.push(Number($integrantes[i].value));
+        }
+      
     }
-    console.log(salary);
     return salary;
 
 }
