@@ -6,14 +6,15 @@ const $btnCalcular = document.querySelector("#btn-calculate");
 $btnAgregar.onclick = function(){
     createInputFamily();
     showBtnCalculate();
-    
+    hideStatics();
     event.preventDefault();
 }
 
 $btnQuitar.onclick = function(){
-    
+    hideStatics();
     if(!removeInputFamily()){
         hideBtnCalculate();
+        
     }
     event.preventDefault();
 }
